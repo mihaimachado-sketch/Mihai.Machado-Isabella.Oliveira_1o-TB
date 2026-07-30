@@ -1,207 +1,329 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Famigerada FYP: Como o TikTok Reescreveu a Sociedade</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+:root {
+  /* Cores Principais - Modo Quente / Neon */
+  --amarelo: #ffe600;
+  --laranja: #ff6600;
+  --magenta: #ff007f;
+  --rosa: #ff00a0;
+  --ciano: #00f0ff;
+  
+  --bg-principal: linear-gradient(-45deg, #090014, #1f002b, #001f2b, #1a001a);
+  --bg-card: rgba(15, 5, 29, 0.85);
+  --texto-principal: #ffffff;
+  --borda-card: var(--ciano);
+  --header-bg: linear-gradient(135deg, var(--laranja), var(--magenta), var(--rosa));
+  --header-glow: 0 0 35px var(--magenta), 0 0 15px var(--ciano);
+}
 
-  <div class="barra-ferramentas">
-    <button id="btn-tema" onclick="alternarTema()">❄️ Modo Frio</button>
-  </div>
+/* Animações de fundo em movimento */
+@keyframes gradienteQuente {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  <header>
-    <h1>A Famigerada FYP</h1>
-    <h2>Como o TikTok Reescreveu a Sociedade</h2>
-    <p class="subtitulo">Uma análise profunda sobre a evolução, o impacto cultural, a economia do feed infinito e como o algoritmo molda nosso comportamento.</p>
-  </header>
+@keyframes gradienteFrio {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  <main>
-    <section class="card historia">
-      <h2>📖 Da Dublagem ao Império Comercial</h2>
-      <p>O fenômeno social e econômico que conhecemos hoje como TikTok passou por uma metamorfose impressionante. Entre <strong>2017 e 2018</strong>, a empresa chinesa ByteDance adquiriu o aplicativo <em>Musical.ly</em> por cerca de 1 bilhão de dólares e fundiu a plataforma com o seu próprio app, o TikTok. Naquela época inicial, o público do aplicativo era predominantemente infanto-juvenil, e o ecossistema girava em torno de dublagens labiais (lip-sync), coreografias de 15 segundos e desafios simples.</p>
-      
-      <p>O grande divisor de águas ocorreu com o aprimoramento contínuo do seu motor de recomendação na aba <strong>"For You Page" (FYP)</strong>. Enquanto redes sociais tradicionais como o Instagram e o Facebook fundamentavam seus feeds no grafo social (entregando conteúdo com base nas pessoas que você escolheu seguir), o TikTok inaugurou a era do <em>grafo de interesse</em>. O algoritmo analisa em tempo real sinais milimétricos: quantos segundos você retém a atenção em um vídeo, se você assiste em loop, se lê os comentários ou compartilha com amigos. Com isso, a plataforma entrega uma experiência hiperpersonalizada, capaz de prever seus gostos antes mesmo de você os verbalizar.</p>
+/* Animação Neon de Pulso */
+@keyframes pulsoQuente {
+  0%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px var(--magenta), 0 0 40px var(--magenta); }
+  50% { text-shadow: 0 0 10px #fff, 0 0 20px var(--ciano), 0 0 40px var(--ciano); }
+}
 
-      <p>Durante a pandemia de 2020, o aplicativo atingiu sua maturidade cultural, atraindo adultos, empresas, educadores e artistas. A linguagem dos vídeos curtos se tornou o padrão ouro da internet. Mais recentemente, o ecossistema deu mais um salto estrutural com o lançamento do <strong>TikTok Shop</strong> e as transmissões ao vivo monetizadas (como o fenômeno das <em>Lives de NPC</em>). Ao integrar o e-commerce diretamente no feed sem que o usuário precise sair do app, o TikTok deixou de ser apenas um passatempo para se tornar uma vitrine gigante e instantânea, capaz de esgotar estoques globais de produtos em poucas horas e redefinir a indústria do varejo digital.</p>
-    </section>
+@keyframes pulsoFrio {
+  0%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px #00f0ff, 0 0 40px #7000ff; }
+  50% { text-shadow: 0 0 10px #fff, 0 0 20px #00a2ff, 0 0 40px #00f0ff; }
+}
 
-    <section class="card positivos">
-      <h2>🟢 O Lado Bom do Algoritmo</h2>
-      <ul>
-        <li><strong>Democratização do Conteúdo:</strong> Qualquer pessoa, independentemente de ter milhões ou zero seguidores, pode viralizar se o conteúdo prender a atenção.</li>
-        <li><strong>Aprendizado Rápido & Microeducação:</strong> O surgimento de nichos como BookTok, dicas de estudo, programação, gastronomia e divulgação científica em pílulas curtas.</li>
-        <li><strong>Comunidade e Identidade:</strong> Permite que jovens e minorias encontrem pessoas com os mesmos gostos e nichos específicos em escala global.</li>
-        <li><strong>Oportunidades Econômicas:</strong> Surgimento de novas profissões, alavancagem de pequenos negócios locais e alcance orgânico para artistas independentes.</li>
-      </ul>
-    </section>
+/* ===================================================
+   PALETA DO MODO FRIO (ICE & CYBER BLUE ULTRA NEON)
+   =================================================== */
+body.modo-frio {
+  --bg-principal: linear-gradient(-45deg, #020b18, #001938, #0d0029, #002b36);
+  --bg-card: rgba(4, 20, 42, 0.85);
+  --texto-principal: #ffffff;
+  --borda-card: #00f0ff;
+  --header-bg: linear-gradient(135deg, #00f0ff, #7000ff, #0051ff);
+  --header-glow: 0 0 35px #00f0ff, 0 0 15px #7000ff;
+  
+  background: var(--bg-principal);
+  background-size: 400% 400%;
+  animation: gradienteFrio 10s ease infinite;
+}
 
-    <section class="card negativos">
-      <h2>🔴 O Lado Negativo do Algoritmo</h2>
-      <ul>
-        <li><strong>Diminuição do Tempo de Atenção (Brain Rot):</strong> A constante hiperestimulação por conteúdos de curtíssima duração pode prejudicar a capacidade de foco em atividades longas, como leitura de livros ou estudos.</li>
-        <li><strong>Vício & Algoritmo Preditivo:</strong> O mecanismo de rolar a tela em busca de uma nova recompensa (feed infinito) gera picos de dopamina desenhados para retenção prolongada.</li>
-        <li><strong>Pressão Estética e Comparação Social:</strong> Uso massivo de filtros de embelezamento e exposição contínua a vidas idealizadas que afetam a autoestima.</li>
-        <li><strong>Viralização de Desinformação:</strong> Fake news e tendências perigosas se espalham em alta velocidade antes que haja verificação formal dos fatos.</li>
-      </ul>
-    </section>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-principal);
+  background-size: 400% 400%;
+  animation: gradienteQuente 10s ease infinite;
+  color: var(--texto-principal);
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+  transition: all 0.5s ease;
+}
 
-    <section class="card tabela-section">
-      <h2>📊 Comparativo Rápido</h2>
-      <div class="tabela-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Aspecto</th>
-              <th>Impacto Positivo</th>
-              <th>Impacto Negativo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Cultura</strong></td>
-              <td>Lança tendências globais e descobre novos talentos</td>
-              <td>Cria memes descartáveis e conteúdos superficiais</td>
-            </tr>
-            <tr>
-              <td><strong>Saúde Mental</strong></td>
-              <td>Espaço de acolhimento, empatia e identificação</td>
-              <td>Comparação social constante e ansiedade</td>
-            </tr>
-            <tr>
-              <td><strong>Informação</strong></td>
-              <td>Acesso rápido a curiosidades e notícias em tempo real</td>
-              <td>Propagação veloz de fake news e desinformação</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+/* Barra de Ferramentas Fixa */
+.barra-ferramentas {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+}
 
-    <section class="card glossario">
-      <h2>📚 Glossário do TikTok</h2>
-      <div class="grid-glossario">
-        <div class="item-glossario">
-          <h3>FYP (For You Page)</h3>
-          <p>A página "Para Você", onde o algoritmo entrega conteúdos recomendados sob medida para o usuário.</p>
-        </div>
-        <div class="item-glossario">
-          <h3>POV (Point of View)</h3>
-          <p>Significa "Ponto de Vista". Formato de vídeo onde o criador encena uma situação como se o espectador estivesse vivendo aquilo.</p>
-        </div>
-        <div class="item-glossario">
-          <h3>Flop / Flopar</h3>
-          <p>Quando um vídeo não atinge o alcance esperado e recebe poucas visualizações e interações.</p>
-        </div>
-        <div class="item-glossario">
-          <h3>Shadowban</h3>
-          <p>Bloqueio "fantasma" onde a plataforma reduz drasticamente a entrega dos vídeos de um perfil sem avisá-lo formalmente.</p>
-        </div>
-        <div class="item-glossario">
-          <h3>Trend</h3>
-          <p>Tendência popular (música, dança, áudio ou formato de piada) que milhares de pessoas reproduzem ao mesmo tempo.</p>
-        </div>
-      </div>
-    </section>
+#btn-tema {
+  background-color: var(--amarelo);
+  color: #000;
+  border: none;
+  padding: 12px 22px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 20px var(--amarelo);
+  transition: all 0.3s ease;
+}
 
-    <section class="card conclusao">
-      <h2>💡 Conclusão</h2>
-      <p>O TikTok não é nem vilão absoluto nem herói: ele é uma ferramenta potente, e o verdadeiro impacto depende da forma como a sociedade aprende a consumir esse conteúdo de forma consciente.</p>
-    </section>
+body.modo-frio #btn-tema {
+  background-color: #00f0ff;
+  color: #000;
+  box-shadow: 0 0 20px #00f0ff;
+}
 
-    <section class="card quiz-container">
-      <h2>🎮 Quiz Interativo</h2>
-      <p class="chamada-quiz">Que tal fazer um quiz para ver que tipo de usuário TikToker você é?</p>
-      
-      <form id="quiz-form">
-        <div class="pergunta">
-          <p>1. Quanto tempo você costuma passar no TikTok por dia?</p>
-          <label><input type="radio" name="p1" value="1"> Menos de 30 minutos</label><br>
-          <label><input type="radio" name="p1" value="2"> Entre 1 e 2 horas</label><br>
-          <label><input type="radio" name="p1" value="3"> Mais de 3 horas (perco a noção do tempo)</label>
-        </div>
+#btn-tema:hover {
+  transform: scale(1.1);
+}
 
-        <div class="pergunta">
-          <p>2. Você já abriu o app apenas para "olhar um vídeo" e ficou preso por horas?</p>
-          <label><input type="radio" name="p2" value="1"> Raras vezes ou nunca</label><br>
-          <label><input type="radio" name="p2" value="2"> Às vezes, principalmente à noite</label><br>
-          <label><input type="radio" name="p2" value="3"> Quase todo dia</label>
-        </div>
+header {
+  background: var(--header-bg);
+  color: white;
+  padding: 50px 20px;
+  border-radius: 16px;
+  box-shadow: var(--header-glow);
+  text-align: center;
+  transition: all 0.5s ease;
+}
 
-        <div class="pergunta">
-          <p>3. Como você se sente ao tentar assistir a um filme longo sem olhar o celular?</p>
-          <label><input type="radio" name="p3" value="1"> Tranquilo, assisto sem problemas</label><br>
-          <label><input type="radio" name="p3" value="2"> Sinto vontade de checar o celular às vezes</label><br>
-          <label><input type="radio" name="p3" value="3"> Acho entediante se o filme for lento</label>
-        </div>
+h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  letter-spacing: 1px;
+  animation: pulsoQuente 3s infinite alternate;
+}
 
-        <button type="button" class="btn-quiz" onclick="calcularQuiz()">Ver Resultado</button>
-      </form>
-      <div id="quiz-resultado" class="resultado-quiz"></div>
-    </section>
-  </main>
+body.modo-frio h1 {
+  animation: pulsoFrio 3s infinite alternate;
+}
 
-  <footer>
-    <p>Feito por mim © 2026</p>
-  </footer>
+header h2 {
+  color: var(--amarelo);
+  margin-top: 10px;
+  font-weight: 600;
+  text-shadow: 0 0 10px var(--amarelo);
+}
 
-  <button id="btn-topo" onclick="voltarAoTopo()">⬆ Voltar ao topo</button>
+body.modo-frio header h2 {
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
+}
 
-  <script>
-    function alternarTema() {
-      document.body.classList.toggle('modo-frio');
-      const btn = document.getElementById('btn-tema');
-      if (document.body.classList.contains('modo-frio')) {
-        btn.innerText = '🔥 Modo Quente';
-      } else {
-        btn.innerText = '❄️ Modo Frio';
-      }
-    }
+.subtitulo {
+  max-width: 700px;
+  margin: 15px auto 0 auto;
+  font-size: 1.1rem;
+}
 
-    function voltarAoTopo() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+main {
+  max-width: 900px;
+  margin: 30px auto;
+}
 
-    window.onscroll = function() {
-      const btnTopo = document.getElementById('btn-topo');
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        btnTopo.style.display = "block";
-      } else {
-        btnTopo.style.display = "none";
-      }
-    };
+.card {
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 30px;
+  border: 2px solid var(--borda-card);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
 
-    function calcularQuiz() {
-      const form = document.getElementById('quiz-form');
-      const p1 = form.elements['p1'].value;
-      const p2 = form.elements['p2'].value;
-      const p3 = form.elements['p3'].value;
+.card:hover {
+  transform: translateY(-4px);
+}
 
-      const resDiv = document.getElementById('quiz-resultado');
+/* Estilos de bordas congelantes para o Modo Frio */
+body.modo-frio .historia { border: 2px solid #00f0ff; box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+body.modo-frio .positivos { border: 2px solid #00a2ff; box-shadow: 0 0 20px rgba(0, 162, 255, 0.4); }
+body.modo-frio .negativos { border: 2px solid #7000ff; box-shadow: 0 0 20px rgba(112, 0, 255, 0.4); }
+body.modo-frio .quiz-container { border: 2px solid #00f0ff; box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+body.modo-frio .glossario { border: 2px solid #a600ff; box-shadow: 0 0 20px rgba(166, 0, 255, 0.4); }
+body.modo-frio .conclusao { border: 2px solid #00f0ff; box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
 
-      if (!p1 || !p2 || !p3) {
-        resDiv.innerHTML = "<p style='color: var(--magenta);'>Por favor, responda a todas as perguntas para ver seu resultado!</p>";
-        resDiv.style.display = "block";
-        return;
-      }
+.historia h2 { color: var(--amarelo); text-shadow: 0 0 8px currentColor; }
+.positivos h2 { color: var(--ciano); text-shadow: 0 0 8px currentColor; }
+.negativos h2 { color: var(--magenta); text-shadow: 0 0 8px currentColor; }
+.quiz-container h2 { color: var(--rosa); text-shadow: 0 0 8px currentColor; }
+.glossario h2 { color: var(--ciano); text-shadow: 0 0 8px currentColor; }
+.conclusao h2 { color: var(--amarelo); text-shadow: 0 0 8px currentColor; }
 
-      const total = parseInt(p1) + parseInt(p2) + parseInt(p3);
-      let mensagem = "";
+body.modo-frio .historia h2 { color: #00f0ff; }
+body.modo-frio .positivos h2 { color: #00a2ff; }
+body.modo-frio .negativos h2 { color: #b366ff; }
+body.modo-frio .quiz-container h2 { color: #00f0ff; }
+body.modo-frio .glossario h2 { color: #e100ff; }
+body.modo-frio .conclusao h2 { color: #00f0ff; }
 
-      if (total <= 4) {
-        mensagem = "🌱 <strong>TikToker Casual:</strong> Você usa o aplicativo de forma moderada e tem total controle sobre seu tempo!";
-      } else if (total <= 7) {
-        mensagem = "⚡ <strong>TikToker Moderado:</strong> A FYP já te pega de surpresa às vezes. Fique atento para não perder muitas horas navegando sem perceber!";
-      } else {
-        mensagem = "🔥 <strong>TikToker Hardcore:</strong> O algoritmo te conhece melhor do que você mesmo! Cuidado com o tempo de tela excessivo.";
-      }
+ul { padding-left: 20px; }
+li { margin-bottom: 12px; }
 
-      resDiv.innerHTML = mensagem;
-      resDiv.style.display = "block";
-    }
-  </script>
+li strong { color: var(--amarelo); }
+body.modo-frio li strong { color: #00f0ff; }
 
-</body>
-</html>
+/* Tabela */
+.tabela-container { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #333; }
+
+th { background-color: var(--rosa); color: white; box-shadow: 0 0 10px var(--rosa); }
+body.modo-frio th { background-color: #7000ff; box-shadow: 0 0 10px #7000ff; }
+
+td strong { color: var(--ciano); }
+body.modo-frio td strong { color: #00f0ff; }
+
+/* Quiz Styles */
+.chamada-quiz {
+  font-size: 1.2rem;
+  color: var(--ciano);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+body.modo-frio .chamada-quiz { color: #00f0ff; }
+
+.pergunta {
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.pergunta p {
+  font-weight: bold;
+  margin-top: 0;
+  color: var(--amarelo);
+}
+
+body.modo-frio .pergunta p { color: #00f0ff; }
+
+.pergunta label {
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.btn-quiz {
+  background-color: var(--ciano);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--ciano);
+  transition: all 0.3s ease;
+}
+
+body.modo-frio .btn-quiz {
+  background-color: #00f0ff;
+  box-shadow: 0 0 15px #00f0ff;
+}
+
+.btn-quiz:hover {
+  transform: scale(1.05);
+  background-color: var(--amarelo);
+  box-shadow: 0 0 20px var(--amarelo);
+}
+
+.resultado-quiz {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: rgba(0, 240, 255, 0.1);
+  border: 1px solid var(--ciano);
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px var(--ciano);
+}
+
+/* Glossário Grid */
+.grid-glossario {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.item-glossario {
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid var(--rosa);
+  box-shadow: 0 0 10px rgba(255, 0, 160, 0.2);
+}
+
+body.modo-frio .item-glossario {
+  border-left: 4px solid #00f0ff;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.item-glossario h3 {
+  margin-top: 0;
+  color: var(--amarelo);
+  font-size: 1.1rem;
+}
+
+body.modo-frio .item-glossario h3 { color: #00f0ff; }
+
+.item-glossario p { margin-bottom: 0; font-size: 0.95rem; }
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: var(--amarelo);
+  font-weight: bold;
+  text-shadow: 0 0 10px var(--amarelo);
+}
+
+body.modo-frio footer {
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
+}
+
+#btn-topo {
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: var(--ciano);
+  color: #000;
+  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 0 20px var(--ciano);
+  transition: all 0.2s;
+}
+
+#btn-topo:hover {
+  transform: scale(1.1);
+  background-color: var(--amarelo);
+  box-shadow: 0 0 25px var(--amarelo);
+}
