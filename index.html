@@ -164,22 +164,34 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    window.onscroll = function() {
+    window.addEventListener('scroll', function() {
       const btnTopo = document.getElementById('btn-topo');
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      if (window.scrollY > 150) {
         btnTopo.style.display = "block";
       } else {
         btnTopo.style.display = "none";
       }
-    };
+    });
 
     function calcularQuiz() {
-      const form = document.getElementById('quiz-form');
-      const p1 = form.elements['p1'].value;
-      const p2 = form.elements['p2'].value;
-      const p3 = form.elements['p3'].value;
+      const p1 = document.querySelector('input[name="p1"]:checked');
+      const p2 = document.querySelector('input[name="p2"]:checked');
+      const p3 = document.querySelector('input[name="p3"]:checked');
 
       const resDiv = document.getElementById('quiz-resultado');
 
       if (!p1 || !p2 || !p3) {
-        resDiv.innerHTML = "<p style='color: var(--magenta
+        resDiv.innerHTML = "<p style='color: var(--magenta); font-weight: bold;'>⚠️ Por favor, responda a todas as 3 perguntas para ver seu resultado!</p>";
+        resDiv.style.display = "block";
+        return;
+      }
+
+      const total = parseInt(p1.value) + parseInt(p2.value) + parseInt(p3.value);
+      let mensagem = "";
+
+      if (total <= 4) {
+        mensagem = "🌱 <strong>TikToker Casual:</strong> Você usa o aplicativo de forma moderada e tem total controle sobre seu tempo!";
+      } else if (total <= 7) {
+        mensagem = "⚡ <strong>TikToker Moderado:</strong> A FYP já te pega de surpresa às vezes. Fique atento para não perder muitas horas navegando sem perceber!";
+      } else {
+        mensagem = "🔥 <strong>TikToker Hardcore:</strong> O algoritmo te conhece melhor do que você mesmo! Cuidado com o tempo de tela excessivo
