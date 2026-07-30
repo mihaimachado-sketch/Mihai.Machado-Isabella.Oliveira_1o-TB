@@ -9,7 +9,7 @@
 <body>
 
   <div class="barra-ferramentas">
-    <button id="btn-tema" onclick="alternarTema()">🎨 Modo Chamativo</button>
+    <button id="btn-tema" onclick="alternarTema()">❄️ Modo Frio</button>
   </div>
 
   <header>
@@ -151,12 +151,12 @@
 
   <script>
     function alternarTema() {
-      document.body.classList.toggle('modo-chamativo');
+      document.body.classList.toggle('modo-frio');
       const btn = document.getElementById('btn-tema');
-      if (document.body.classList.contains('modo-chamativo')) {
-        btn.innerText = '🌙 Modo Sóbrio';
+      if (document.body.classList.contains('modo-frio')) {
+        btn.innerText = '🔥 Modo Quente';
       } else {
-        btn.innerText = '🎨 Modo Chamativo';
+        btn.innerText = '❄️ Modo Frio';
       }
     }
 
@@ -182,26 +182,4 @@
       const resDiv = document.getElementById('quiz-resultado');
 
       if (!p1 || !p2 || !p3) {
-        resDiv.innerHTML = "<p style='color: var(--magenta);'>Por favor, responda a todas as perguntas para ver seu resultado!</p>";
-        resDiv.style.display = "block";
-        return;
-      }
-
-      const total = parseInt(p1) + parseInt(p2) + parseInt(p3);
-      let mensagem = "";
-
-      if (total <= 4) {
-        mensagem = "🌱 <strong>TikToker Casual:</strong> Você usa o aplicativo de forma moderada e tem total controle sobre seu tempo!";
-      } else if (total <= 7) {
-        mensagem = "⚡ <strong>TikToker Moderado:</strong> A FYP já te pega de surpresa às vezes. Fique atento para não perder muitas horas navegando sem perceber!";
-      } else {
-        mensagem = "🔥 <strong>TikToker Hardcore:</strong> O algoritmo te conhece melhor do que você mesmo! Cuidado com o tempo de tela excessivo.";
-      }
-
-      resDiv.innerHTML = mensagem;
-      resDiv.style.display = "block";
-    }
-  </script>
-
-</body>
-</html>
+        resDiv.innerHTML = "<p style='color: var(--magenta
