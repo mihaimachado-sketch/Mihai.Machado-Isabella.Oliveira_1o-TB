@@ -1,73 +1,125 @@
 :root {
+  /* Cores Globais Vibrantes */
   --amarelo: #ffe600;
   --laranja: #ff6600;
   --magenta: #ff007f;
   --rosa: #ff00a0;
   --ciano: #00f0ff;
-  
-  --bg-principal: #121214;
-  --bg-card: #1a1a1e;
-  --texto-principal: #ffffff;
-  --borda-card: #333333;
-  --header-bg: linear-gradient(135deg, #1f1f23, #2a2a30);
-  --header-glow: transparent;
+  --azul-eletrico: #0077ff;
+  --roxo-neon: #9d00ff;
+  --frio-fundo: #050814;
 }
 
 /* ===================================================
-   MODO CHAMATIVO EXTREMO (ULTRA NEON CYBERPUNK)
+   TEMA 1: MODO QUENTE (Neon Rosa / Laranja / Amarelo)
    =================================================== */
-
-/* Animação do fundo em movimento */
-@keyframes gradienteInfinito {
+@keyframes gradienteQuente {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Animação de pulso neon para o título */
-@keyframes pulsoNeon {
-  0%, 100% {
-    text-shadow: 
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 20px var(--magenta),
-      0 0 40px var(--magenta),
-      0 0 80px var(--magenta);
-  }
-  50% {
-    text-shadow: 
-      0 0 2px #fff,
-      0 0 5px #fff,
-      0 0 10px var(--ciano),
-      0 0 25px var(--ciano),
-      0 0 50px var(--ciano);
-  }
-}
-
-body.modo-chamativo {
-  --bg-principal: linear-gradient(-45deg, #090014, #1f002b, #001f2b, #1a001a);
-  --bg-card: rgba(15, 5, 29, 0.85);
-  --texto-principal: #ffffff;
-  --borda-card: var(--ciano);
-  --header-bg: linear-gradient(135deg, var(--laranja), var(--magenta), var(--rosa));
-  --header-glow: 0 0 35px var(--magenta), 0 0 15px var(--ciano);
-  
-  background: var(--bg-principal);
-  background-size: 400% 400%;
-  animation: gradienteInfinito 10s ease infinite;
-}
-
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-principal);
-  color: var(--texto-principal);
+  color: #ffffff;
   margin: 0;
   padding: 20px;
   line-height: 1.6;
-  transition: background 0.5s ease, color 0.5s ease;
+  
+  /* Fundo Quente Animado */
+  background: linear-gradient(-45deg, #090014, #1f002b, #2b0010, #1a001a);
+  background-size: 400% 400%;
+  animation: gradienteQuente 10s ease infinite;
+  transition: all 0.5s ease;
 }
 
-/* Barra de Ferramentas Fixa */
+/* Configurações de Cartão no Modo Quente */
+.card {
+  background-color: rgba(15, 5, 29, 0.85);
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 30px;
+  border: 2px solid var(--magenta);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(5px);
+}
+
+header {
+  background: linear-gradient(135deg, var(--laranja), var(--magenta), var(--rosa));
+  color: white;
+  padding: 50px 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 35px var(--magenta), 0 0 15px var(--rosa);
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #fff, 0 0 20px var(--magenta);
+}
+
+header h2 {
+  color: var(--amarelo);
+  margin-top: 10px;
+  font-weight: 600;
+  text-shadow: 0 0 8px var(--amarelo);
+}
+
+/* ===================================================
+   TEMA 2: MODO FRIO (Cyberpunk Ciano / Azul / Roxo)
+   =================================================== */
+@keyframes gradienteFrio {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body.modo-frio {
+  /* Fundo Frio Animado */
+  background: linear-gradient(-45deg, #020813, #081b38, #12032b, #031726);
+  background-size: 400% 400%;
+  animation: gradienteFrio 10s ease infinite;
+}
+
+body.modo-frio header {
+  background: linear-gradient(135deg, var(--azul-eletrico), var(--roxo-neon), var(--ciano));
+  box-shadow: 0 0 35px var(--azul-eletrico), 0 0 20px var(--ciano);
+}
+
+body.modo-frio h1 {
+  text-shadow: 0 0 10px #fff, 0 0 20px var(--ciano), 0 0 30px var(--azul-eletrico);
+}
+
+body.modo-frio header h2 {
+  color: var(--ciano);
+  text-shadow: 0 0 10px var(--ciano);
+}
+
+body.modo-frio .card {
+  background-color: rgba(4, 12, 30, 0.85);
+  border: 2px solid var(--ciano);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+body.modo-frio .historia { border-color: var(--ciano); }
+body.modo-frio .positivos { border-color: var(--azul-eletrico); }
+body.modo-frio .negativos { border-color: var(--roxo-neon); }
+body.modo-frio .quiz-container { border-color: var(--ciano); }
+body.modo-frio .glossario { border-color: var(--azul-eletrico); }
+body.modo-frio .conclusao { border-color: var(--ciano); }
+
+body.modo-frio .historia h2 { color: var(--ciano); text-shadow: 0 0 8px var(--ciano); }
+body.modo-frio .positivos h2 { color: var(--azul-eletrico); text-shadow: 0 0 8px var(--azul-eletrico); }
+body.modo-frio .negativos h2 { color: var(--roxo-neon); text-shadow: 0 0 8px var(--roxo-neon); }
+body.modo-frio .quiz-container h2 { color: var(--ciano); text-shadow: 0 0 8px var(--ciano); }
+body.modo-frio .glossario h2 { color: var(--azul-eletrico); text-shadow: 0 0 8px var(--azul-eletrico); }
+body.modo-frio .conclusao h2 { color: var(--ciano); text-shadow: 0 0 8px var(--ciano); }
+
+/* Botão de Troca de Modo */
 .barra-ferramentas {
   position: fixed;
   top: 15px;
@@ -83,51 +135,21 @@ body {
   font-weight: bold;
   border-radius: 25px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px var(--rosa);
   transition: all 0.3s ease;
 }
 
-body.modo-chamativo #btn-tema {
-  background-color: var(--amarelo);
+body.modo-frio #btn-tema {
+  background-color: var(--ciano);
   color: #000;
-  box-shadow: 0 0 20px var(--amarelo);
+  box-shadow: 0 0 20px var(--ciano);
 }
 
 #btn-tema:hover {
   transform: scale(1.1);
 }
 
-header {
-  background: var(--header-bg);
-  color: white;
-  padding: 50px 20px;
-  border-radius: 16px;
-  box-shadow: var(--header-glow);
-  text-align: center;
-  transition: all 0.5s ease;
-}
-
-h1 {
-  margin: 0;
-  font-size: 2.8rem;
-  letter-spacing: 1px;
-}
-
-body.modo-chamativo h1 {
-  animation: pulsoNeon 3s infinite alternate;
-  color: #fff;
-}
-
-header h2 {
-  color: var(--amarelo);
-  margin-top: 10px;
-  font-weight: 600;
-}
-
-body.modo-chamativo header h2 {
-  text-shadow: 0 0 10px var(--amarelo);
-}
-
+/* Demais Elementos do Site */
 .subtitulo {
   max-width: 700px;
   margin: 15px auto 0 auto;
@@ -139,127 +161,39 @@ main {
   margin: 30px auto;
 }
 
-.card {
-  background-color: var(--bg-card);
-  border-radius: 16px;
-  padding: 25px;
-  margin-bottom: 30px;
-  border: 1px solid var(--borda-card);
-  transition: all 0.4s ease;
-  backdrop-filter: blur(5px);
-}
+.historia h2 { color: var(--amarelo); text-shadow: 0 0 8px var(--amarelo); }
+.positivos h2 { color: var(--ciano); text-shadow: 0 0 8px var(--ciano); }
+.negativos h2 { color: var(--magenta); text-shadow: 0 0 8px var(--magenta); }
+.quiz-container h2 { color: var(--rosa); text-shadow: 0 0 8px var(--rosa); }
+.glossario h2 { color: var(--ciano); text-shadow: 0 0 8px var(--ciano); }
+.conclusao h2 { color: var(--amarelo); text-shadow: 0 0 8px var(--amarelo); }
 
-/* Efeitos Neon nos Cartões durante o Modo Chamativo */
-body.modo-chamativo .card {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-}
+ul { padding-left: 20px; }
+li { margin-bottom: 12px; }
+li strong { color: var(--amarelo); }
+body.modo-frio li strong { color: var(--ciano); }
 
-body.modo-chamativo .card:hover {
-  transform: translateY(-4px);
-}
-
-body.modo-chamativo .historia {
-  border: 2px solid var(--amarelo);
-  box-shadow: 0 0 20px rgba(255, 230, 0, 0.3);
-}
-
-body.modo-chamativo .positivos {
-  border: 2px solid var(--ciano);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
-}
-
-body.modo-chamativo .negativos {
-  border: 2px solid var(--magenta);
-  box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
-}
-
-body.modo-chamativo .quiz-container {
-  border: 2px solid var(--rosa);
-  box-shadow: 0 0 20px rgba(255, 0, 160, 0.3);
-}
-
-body.modo-chamativo .glossario {
-  border: 2px solid var(--ciano);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
-}
-
-body.modo-chamativo .conclusao {
-  border: 2px solid var(--amarelo);
-  box-shadow: 0 0 20px rgba(255, 230, 0, 0.3);
-}
-
-.historia h2 { color: var(--amarelo); }
-.positivos h2 { color: var(--ciano); }
-.negativos h2 { color: var(--magenta); }
-.quiz-container h2 { color: var(--rosa); }
-.glossario h2 { color: var(--ciano); }
-.conclusao h2 { color: var(--amarelo); }
-
-body.modo-chamativo h2 {
-  text-shadow: 0 0 8px currentColor;
-}
-
-ul {
-  padding-left: 20px;
-}
-
-li {
-  margin-bottom: 12px;
-}
-
-li strong {
+.chamada-quiz {
+  font-size: 1.2rem;
   color: var(--amarelo);
+  margin-bottom: 25px;
+  font-weight: 600;
 }
+body.modo-frio .chamada-quiz { color: var(--ciano); }
 
 /* Tabela */
-.tabela-container {
-  overflow-x: auto;
-}
+.tabela-container { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #333; }
+th { background-color: var(--rosa); color: white; box-shadow: 0 0 10px var(--rosa); }
+body.modo-frio th { background-color: var(--azul-eletrico); box-shadow: 0 0 10px var(--azul-eletrico); }
+td strong { color: var(--ciano); }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-
-th, td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #333;
-}
-
-th {
-  background-color: var(--rosa);
-  color: white;
-}
-
-body.modo-chamativo th {
-  box-shadow: 0 0 10px var(--rosa);
-}
-
-td strong {
-  color: var(--ciano);
-}
-
-/* Quiz Styles */
-.pergunta {
-  margin-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  border-radius: 8px;
-}
-
-.pergunta p {
-  font-weight: bold;
-  margin-top: 0;
-  color: var(--amarelo);
-}
-
-.pergunta label {
-  cursor: pointer;
-  display: inline-block;
-  margin-bottom: 8px;
-}
+/* Quiz */
+.pergunta { margin-bottom: 20px; background-color: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; }
+.pergunta p { font-weight: bold; margin-top: 0; color: var(--amarelo); }
+body.modo-frio .pergunta p { color: var(--ciano); }
+.pergunta label { cursor: pointer; display: inline-block; margin-bottom: 8px; }
 
 .btn-quiz {
   background-color: var(--ciano);
@@ -270,18 +204,11 @@ td strong {
   font-weight: bold;
   border-radius: 25px;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
-}
-
-body.modo-chamativo .btn-quiz {
   box-shadow: 0 0 15px var(--ciano);
+  transition: transform 0.2s, background-color 0.3s;
 }
 
-.btn-quiz:hover {
-  transform: scale(1.05);
-  background-color: var(--amarelo);
-  box-shadow: 0 0 20px var(--amarelo);
-}
+.btn-quiz:hover { transform: scale(1.05); background-color: var(--amarelo); box-shadow: 0 0 20px var(--amarelo); }
 
 .resultado-quiz {
   display: none;
@@ -291,52 +218,19 @@ body.modo-chamativo .btn-quiz {
   background-color: rgba(0, 240, 255, 0.1);
   border: 1px solid var(--ciano);
   font-size: 1.1rem;
-}
-
-body.modo-chamativo .resultado-quiz {
   box-shadow: 0 0 15px var(--ciano);
 }
 
-/* Glossário Grid */
-.grid-glossario {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-}
+/* Glossário */
+.grid-glossario { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 20px; }
+.item-glossario { background-color: rgba(255, 255, 255, 0.03); padding: 15px; border-radius: 8px; border-left: 4px solid var(--rosa); }
+body.modo-frio .item-glossario { border-left-color: var(--ciano); }
+.item-glossario h3 { margin-top: 0; color: var(--amarelo); font-size: 1.1rem; }
+body.modo-frio .item-glossario h3 { color: var(--ciano); }
+.item-glossario p { margin-bottom: 0; font-size: 0.95rem; }
 
-.item-glossario {
-  background-color: rgba(255, 255, 255, 0.03);
-  padding: 15px;
-  border-radius: 8px;
-  border-left: 4px solid var(--rosa);
-}
-
-body.modo-chamativo .item-glossario {
-  box-shadow: 0 0 10px rgba(255, 0, 160, 0.2);
-}
-
-.item-glossario h3 {
-  margin-top: 0;
-  color: var(--amarelo);
-  font-size: 1.1rem;
-}
-
-.item-glossario p {
-  margin-bottom: 0;
-  font-size: 0.95rem;
-}
-
-footer {
-  text-align: center;
-  margin-top: 40px;
-  color: var(--amarelo);
-  font-weight: bold;
-}
-
-body.modo-chamativo footer {
-  text-shadow: 0 0 10px var(--amarelo);
-}
+footer { text-align: center; margin-top: 40px; color: var(--amarelo); font-weight: bold; text-shadow: 0 0 10px var(--amarelo); }
+body.modo-frio footer { color: var(--ciano); text-shadow: 0 0 10px var(--ciano); }
 
 #btn-topo {
   display: none;
@@ -345,23 +239,14 @@ body.modo-chamativo footer {
   right: 25px;
   z-index: 99;
   border: none;
-  outline: none;
   background-color: var(--ciano);
   color: #000;
   cursor: pointer;
   padding: 12px 18px;
   border-radius: 30px;
   font-weight: bold;
-  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4);
-  transition: transform 0.2s, box-shadow 0.3s;
-}
-
-body.modo-chamativo #btn-topo {
   box-shadow: 0 0 20px var(--ciano);
+  transition: transform 0.2s;
 }
 
-#btn-topo:hover {
-  transform: scale(1.1);
-  background-color: var(--amarelo);
-  box-shadow: 0 0 25px var(--amarelo);
-}
+#btn-topo:hover { transform: scale(1.1); background-color: var(--amarelo); box-shadow: 0 0 25px var(--amarelo); }
