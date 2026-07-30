@@ -8,6 +8,10 @@
 </head>
 <body>
 
+  <div class="barra-ferramentas">
+    <button id="btn-tema" onclick="alternarTema()">🎨 Modo Chamativo</button>
+  </div>
+
   <header>
     <h1>A Famigerada FYP</h1>
     <h2>Como o TikTok Reescreveu a Sociedade</h2>
@@ -76,6 +80,37 @@
   <footer>
     <p>Feito por mim © 2026</p>
   </footer>
+
+  <button id="btn-topo" onclick="voltarAoTopo()">⬆ Voltar ao topo</button>
+
+  <script>
+    function alternarTema() {
+      document.body.classList.toggle('modo-chamativo');
+      const btn = document.getElementById('btn-tema');
+      if (document.body.classList.contains('modo-chamativo')) {
+        btn.innerText = '🌙 Modo Sobrio';
+      } else {
+        btn.innerText = '🎨 Modo Chamativo';
+      }
+    }
+
+    function voltarAoTopo() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Mostra o botão "Voltar ao topo" apenas quando o usuário rolar para baixo
+    window.onscroll = function() {
+      const btnTopo = document.getElementById('btn-topo');
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btnTopo.style.display = "block";
+      } else {
+        btnTopo.style.display = "none";
+      }
+    };
+  </script>
 
 </body>
 </html>
