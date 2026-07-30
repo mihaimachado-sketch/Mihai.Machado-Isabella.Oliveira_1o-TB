@@ -13,13 +13,48 @@
   --header-glow: transparent;
 }
 
+/* ===================================================
+   MODO CHAMATIVO EXTREMO (ULTRA NEON CYBERPUNK)
+   =================================================== */
+
+/* Animação do fundo em movimento */
+@keyframes gradienteInfinito {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animação de pulso neon para o título */
+@keyframes pulsoNeon {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px var(--magenta),
+      0 0 40px var(--magenta),
+      0 0 80px var(--magenta);
+  }
+  50% {
+    text-shadow: 
+      0 0 2px #fff,
+      0 0 5px #fff,
+      0 0 10px var(--ciano),
+      0 0 25px var(--ciano),
+      0 0 50px var(--ciano);
+  }
+}
+
 body.modo-chamativo {
-  --bg-principal: #0b0914;
-  --bg-card: #161224;
+  --bg-principal: linear-gradient(-45deg, #090014, #1f002b, #001f2b, #1a001a);
+  --bg-card: rgba(15, 5, 29, 0.85);
   --texto-principal: #ffffff;
   --borda-card: var(--ciano);
-  --header-bg: linear-gradient(135deg, var(--laranja), var(--magenta));
-  --header-glow: 0 4px 25px rgba(255, 0, 127, 0.5);
+  --header-bg: linear-gradient(135deg, var(--laranja), var(--magenta), var(--rosa));
+  --header-glow: 0 0 35px var(--magenta), 0 0 15px var(--ciano);
+  
+  background: var(--bg-principal);
+  background-size: 400% 400%;
+  animation: gradienteInfinito 10s ease infinite;
 }
 
 body {
@@ -29,9 +64,10 @@ body {
   margin: 0;
   padding: 20px;
   line-height: 1.6;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
+/* Barra de Ferramentas Fixa */
 .barra-ferramentas {
   position: fixed;
   top: 15px;
@@ -43,43 +79,53 @@ body {
   background-color: var(--rosa);
   color: white;
   border: none;
-  padding: 10px 18px;
+  padding: 12px 22px;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: 25px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s, background-color 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+body.modo-chamativo #btn-tema {
+  background-color: var(--amarelo);
+  color: #000;
+  box-shadow: 0 0 20px var(--amarelo);
 }
 
 #btn-tema:hover {
-  transform: scale(1.05);
-  background-color: var(--amarelo);
-  color: #000;
+  transform: scale(1.1);
 }
 
 header {
   background: var(--header-bg);
   color: white;
   padding: 50px 20px;
-  border-radius: 12px;
+  border-radius: 16px;
   box-shadow: var(--header-glow);
   text-align: center;
-  transition: background 0.4s ease, box-shadow 0.4s ease;
+  transition: all 0.5s ease;
 }
 
 h1 {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
+  letter-spacing: 1px;
 }
 
 body.modo-chamativo h1 {
-  text-shadow: 2px 2px 0px var(--amarelo);
+  animation: pulsoNeon 3s infinite alternate;
+  color: #fff;
 }
 
 header h2 {
   color: var(--amarelo);
   margin-top: 10px;
   font-weight: 600;
+}
+
+body.modo-chamativo header h2 {
+  text-shadow: 0 0 10px var(--amarelo);
 }
 
 .subtitulo {
@@ -95,35 +141,51 @@ main {
 
 .card {
   background-color: var(--bg-card);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 25px;
   margin-bottom: 30px;
   border: 1px solid var(--borda-card);
-  transition: border-color 0.4s ease, background-color 0.4s ease;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(5px);
+}
+
+/* Efeitos Neon nos Cartões durante o Modo Chamativo */
+body.modo-chamativo .card {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+body.modo-chamativo .card:hover {
+  transform: translateY(-4px);
 }
 
 body.modo-chamativo .historia {
-  border: 1px solid var(--amarelo);
+  border: 2px solid var(--amarelo);
+  box-shadow: 0 0 20px rgba(255, 230, 0, 0.3);
 }
 
 body.modo-chamativo .positivos {
-  border: 1px solid var(--ciano);
+  border: 2px solid var(--ciano);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
 }
 
 body.modo-chamativo .negativos {
-  border: 1px solid var(--magenta);
+  border: 2px solid var(--magenta);
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
 }
 
 body.modo-chamativo .quiz-container {
-  border: 1px solid var(--rosa);
+  border: 2px solid var(--rosa);
+  box-shadow: 0 0 20px rgba(255, 0, 160, 0.3);
 }
 
 body.modo-chamativo .glossario {
-  border: 1px solid var(--ciano);
+  border: 2px solid var(--ciano);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
 }
 
 body.modo-chamativo .conclusao {
-  border: 1px solid var(--amarelo);
+  border: 2px solid var(--amarelo);
+  box-shadow: 0 0 20px rgba(255, 230, 0, 0.3);
 }
 
 .historia h2 { color: var(--amarelo); }
@@ -132,6 +194,10 @@ body.modo-chamativo .conclusao {
 .quiz-container h2 { color: var(--rosa); }
 .glossario h2 { color: var(--ciano); }
 .conclusao h2 { color: var(--amarelo); }
+
+body.modo-chamativo h2 {
+  text-shadow: 0 0 8px currentColor;
+}
 
 ul {
   padding-left: 20px;
@@ -167,6 +233,10 @@ th {
   color: white;
 }
 
+body.modo-chamativo th {
+  box-shadow: 0 0 10px var(--rosa);
+}
+
 td strong {
   color: var(--ciano);
 }
@@ -174,7 +244,7 @@ td strong {
 /* Quiz Styles */
 .pergunta {
   margin-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.05);
   padding: 15px;
   border-radius: 8px;
 }
@@ -200,12 +270,17 @@ td strong {
   font-weight: bold;
   border-radius: 25px;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.3s;
+  transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+}
+
+body.modo-chamativo .btn-quiz {
+  box-shadow: 0 0 15px var(--ciano);
 }
 
 .btn-quiz:hover {
   transform: scale(1.05);
   background-color: var(--amarelo);
+  box-shadow: 0 0 20px var(--amarelo);
 }
 
 .resultado-quiz {
@@ -216,6 +291,10 @@ td strong {
   background-color: rgba(0, 240, 255, 0.1);
   border: 1px solid var(--ciano);
   font-size: 1.1rem;
+}
+
+body.modo-chamativo .resultado-quiz {
+  box-shadow: 0 0 15px var(--ciano);
 }
 
 /* Glossário Grid */
@@ -231,6 +310,10 @@ td strong {
   padding: 15px;
   border-radius: 8px;
   border-left: 4px solid var(--rosa);
+}
+
+body.modo-chamativo .item-glossario {
+  box-shadow: 0 0 10px rgba(255, 0, 160, 0.2);
 }
 
 .item-glossario h3 {
@@ -251,6 +334,10 @@ footer {
   font-weight: bold;
 }
 
+body.modo-chamativo footer {
+  text-shadow: 0 0 10px var(--amarelo);
+}
+
 #btn-topo {
   display: none;
   position: fixed;
@@ -266,10 +353,15 @@ footer {
   border-radius: 30px;
   font-weight: bold;
   box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4);
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+body.modo-chamativo #btn-topo {
+  box-shadow: 0 0 20px var(--ciano);
 }
 
 #btn-topo:hover {
   transform: scale(1.1);
   background-color: var(--amarelo);
+  box-shadow: 0 0 25px var(--amarelo);
 }
