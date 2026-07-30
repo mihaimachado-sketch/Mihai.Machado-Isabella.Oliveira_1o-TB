@@ -15,10 +15,19 @@
   <header>
     <h1>A Famigerada FYP</h1>
     <h2>Como o TikTok Reescreveu a Sociedade</h2>
-    <p class="subtitulo">Uma breve reflexão sobre como um aplicativo de vídeos curtos passou de entretenimento rápido para uma força cultural e econômica global.</p>
+    <p class="subtitulo">Uma análise profunda sobre a evolução, o impacto cultural, a economia do feed infinito e como o algoritmo molda nosso comportamento.</p>
   </header>
 
   <main>
+    <section class="card historia">
+      <h2>📖 Da Dublagem ao Império Comercial</h2>
+      <p>O fenômeno que hoje conhecemos como TikTok nem sempre teve essa dimensão. Entre <strong>2017 e 2018</strong>, a plataforma começou a ganhar força globalmente após a fusão da ByteDance com o antigo <em>Musical.ly</em>. Naquela época, o foco principal era simples e nichado: dublagens labiais (lip-sync), dancinhas curtas e desafios virais entre adolescentes.</p>
+      
+      <p>O principal objetivo inicial era puramente o entretenimento rápido e descompromissado. No entanto, a grande revolução aconteceu por trás das telas: o aprimoramento do algoritmo da aba <strong>"For You Page" (FYP)</strong>. Diferente de redes tradicionais como Instagram ou Facebook, que recomendavam conteúdos com base em quem você seguia, o TikTok passou a entregar vídeos com base no seu comportamento exato de retenção (o que você assiste até o final, curte ou compartilha).</p>
+      
+      <p>Hoje, a plataforma transcendeu o entretenimento. Com a chegada do <strong>TikTok Shop</strong>, o aplicativo se transformou em uma força econômica global sem precedentes. Ele uniu o consumo de conteúdo ao e-commerce em tempo real: criadores vendem produtos diretamente em transmissões ao vivo ou vídeos curtos, transformando a FYP em uma vitrine hiperpersonalizada que dita tendências de consumo e movimenta bilhões no mercado global.</p>
+    </section>
+
     <section class="card positivos">
       <h2>🟢 O Lado Bom do Algoritmo</h2>
       <ul>
@@ -30,7 +39,7 @@
     </section>
 
     <section class="card negativos">
-      <h2>🔴 O Lado B da Tela</h2>
+      <h2>🔴 O Lado Negativo do Algoritmo</h2>
       <ul>
         <li><strong>Diminuição do Tempo de Atenção (Brain Rot):</strong> A hiperestimulação por vídeos rápidos pode prejudicar o foco em tarefas longas (como leitura ou estudo).</li>
         <li><strong>Vício & Algoritmo Preditivo:</strong> O feed infinito é desenhado para reter o usuário pelo maior tempo possível.</li>
@@ -71,6 +80,61 @@
       </div>
     </section>
 
+    <section class="card quiz-container">
+      <h2>🎮 Quiz: Qual o seu nível de dependência da FYP?</h2>
+      <form id="quiz-form">
+        <div class="pergunta">
+          <p>1. Quanto tempo você costuma passar no TikTok por dia?</p>
+          <label><input type="radio" name="p1" value="1"> Menos de 30 minutos</label><br>
+          <label><input type="radio" name="p1" value="2"> Entre 1 e 2 horas</label><br>
+          <label><input type="radio" name="p1" value="3"> Mais de 3 horas (perco a noção do tempo)</label>
+        </div>
+
+        <div class="pergunta">
+          <p>2. Você já abriu o app apenas para "olhar um vídeo" e ficou preso por horas?</p>
+          <label><input type="radio" name="p2" value="1"> Raras vezes ou nunca</label><br>
+          <label><input type="radio" name="p2" value="2"> Às vezes, principalmente à noite</label><br>
+          <label><input type="radio" name="p2" value="3"> Quase todo dia</label>
+        </div>
+
+        <div class="pergunta">
+          <p>3. Como você se sente ao tentar assistir a um filme longo sem olhar o celular?</p>
+          <label><input type="radio" name="p3" value="1"> Tranquilo, assisto sem problemas</label><br>
+          <label><input type="radio" name="p3" value="2"> Sinto vontade de checar o celular às vezes</label><br>
+          <label><input type="radio" name="p3" value="3"> Acho entediante se o filme for lento</label>
+        </div>
+
+        <button type="button" class="btn-quiz" onclick="calcularQuiz()">Ver Resultado</button>
+      </form>
+      <div id="quiz-resultado" class="resultado-quiz"></div>
+    </section>
+
+    <section class="card glossario">
+      <h2>📚 Glossário do TikTok</h2>
+      <div class="grid-glossario">
+        <div class="item-glossario">
+          <h3>FYP (For You Page)</h3>
+          <p>A página "Para Você", onde o algoritmo entrega conteúdos recomendados sob medida para o usuário.</p>
+        </div>
+        <div class="item-glossario">
+          <h3>POV (Point of View)</h3>
+          <p>Significa "Ponto de Vista". Formato de vídeo onde o criador encena uma situação como se o espectador estivesse vivendo aquilo.</p>
+        </div>
+        <div class="item-glossario">
+          <h3>Flop / Flopar</h3>
+          <p>Quando um vídeo não atinge o alcance esperado e recebe poucas visualizações e interações.</p>
+        </div>
+        <div class="item-glossario">
+          <h3>Shadowban</h3>
+          <p>Bloqueio "fantasma" onde a plataforma reduz drasticamente a entrega dos vídeos de um perfil sem avisá-lo formalmente.</p>
+        </div>
+        <div class="item-glossario">
+          <h3>Trend</h3>
+          <p>Tendência popular (música, dança, áudio ou formato de piada) que milhares de pessoas reproduzem ao mesmo tempo.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="card conclusao">
       <h2>💡 Conclusão</h2>
       <p>O TikTok não é nem vilão absoluto nem herói: ele é uma ferramenta potente, e o verdadeiro impacto depende da forma como a sociedade aprende a consumir esse conteúdo de forma consciente.</p>
@@ -88,20 +152,16 @@
       document.body.classList.toggle('modo-chamativo');
       const btn = document.getElementById('btn-tema');
       if (document.body.classList.contains('modo-chamativo')) {
-        btn.innerText = '🌙 Modo Sobrio';
+        btn.innerText = '🌙 Modo Sóbrio';
       } else {
         btn.innerText = '🎨 Modo Chamativo';
       }
     }
 
     function voltarAoTopo() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Mostra o botão "Voltar ao topo" apenas quando o usuário rolar para baixo
     window.onscroll = function() {
       const btnTopo = document.getElementById('btn-topo');
       if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
@@ -110,7 +170,9 @@
         btnTopo.style.display = "none";
       }
     };
-  </script>
 
-</body>
-</html>
+    function calcularQuiz() {
+      const form = document.getElementById('quiz-form');
+      const p1 = form.elements['p1'].value;
+      const p2 = form.elements['p2'].value;
+      const p3 = form.elements['p3'].value;
