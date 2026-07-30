@@ -318,3 +318,58 @@ body.modo-frio footer {
   background-color: var(--amarelo);
   box-shadow: 0 0 25px var(--amarelo);
 }
+/* Layout em Zigue-Zague para os Cartões com Imagem */
+.layout-zigue-zague {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.layout-zigue-zague.inverter {
+  flex-direction: row-reverse;
+}
+
+.conteudo-texto {
+  flex: 1;
+}
+
+.conteudo-imagem {
+  flex: 0 0 220px;
+  text-align: center;
+}
+
+.img-card {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 12px;
+  border: 2px solid var(--borda-card);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-card:hover {
+  transform: scale(1.05);
+}
+
+body.modo-frio .img-card {
+  border-color: #00f0ff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+}
+
+/* Responsividade para Telas Pequenas/Celulares */
+@media (max-width: 768px) {
+  .layout-zigue-zague,
+  .layout-zigue-zague.inverter {
+    flex-direction: column;
+  }
+  
+  .conteudo-imagem {
+    flex: 1;
+    margin-top: 15px;
+  }
+  
+  .img-card {
+    max-width: 100%;
+  }
+}
