@@ -5,7 +5,6 @@
   --rosa: #ff00a0;
   --ciano: #00f0ff;
   
-  /* Tema Padrão (Escuro Neutro) */
   --bg-principal: #121214;
   --bg-card: #1a1a1e;
   --texto-principal: #ffffff;
@@ -14,178 +13,41 @@
   --header-glow: transparent;
 }
 
-/* Modo Chamativo / Neon */
+/* ===================================================
+   MODO CHAMATIVO EXTREMO (ULTRA NEON CYBERPUNK)
+   =================================================== */
+
+/* Animação do fundo em movimento */
+@keyframes gradienteInfinito {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animação de pulso neon para o título */
+@keyframes pulsoNeon {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px var(--magenta),
+      0 0 40px var(--magenta),
+      0 0 80px var(--magenta);
+  }
+  50% {
+    text-shadow: 
+      0 0 2px #fff,
+      0 0 5px #fff,
+      0 0 10px var(--ciano),
+      0 0 25px var(--ciano),
+      0 0 50px var(--ciano);
+  }
+}
+
 body.modo-chamativo {
-  --bg-principal: #0b0914;
-  --bg-card: #161224;
+  --bg-principal: linear-gradient(-45deg, #090014, #1f002b, #001f2b, #1a001a);
+  --bg-card: rgba(15, 5, 29, 0.85);
   --texto-principal: #ffffff;
   --borda-card: var(--ciano);
-  --header-bg: linear-gradient(135deg, var(--laranja), var(--magenta));
-  --header-glow: 0 4px 25px rgba(255, 0, 127, 0.5);
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-principal);
-  color: var(--texto-principal);
-  margin: 0;
-  padding: 20px;
-  line-height: 1.6;
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-/* Barra de Ferramentas Fixa */
-.barra-ferramentas {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 1000;
-}
-
-#btn-tema {
-  background-color: var(--rosa);
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  font-weight: bold;
-  border-radius: 20px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s, background-color 0.3s;
-}
-
-#btn-tema:hover {
-  transform: scale(1.05);
-  background-color: var(--amarelo);
-  color: #000;
-}
-
-header {
-  background: var(--header-bg);
-  color: white;
-  padding: 50px 20px;
-  border-radius: 12px;
-  box-shadow: var(--header-glow);
-  text-align: center;
-  transition: background 0.4s ease, box-shadow 0.4s ease;
-}
-
-h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-
-body.modo-chamativo h1 {
-  text-shadow: 2px 2px 0px var(--amarelo);
-}
-
-header h2 {
-  color: var(--amarelo);
-  margin-top: 10px;
-  font-weight: 600;
-}
-
-.subtitulo {
-  max-width: 700px;
-  margin: 15px auto 0 auto;
-  font-size: 1.1rem;
-}
-
-main {
-  max-width: 900px;
-  margin: 30px auto;
-}
-
-.card {
-  background-color: var(--bg-card);
-  border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 30px;
-  border: 1px solid var(--borda-card);
-  transition: border-color 0.4s ease, background-color 0.4s ease;
-}
-
-body.modo-chamativo .positivos {
-  border: 1px solid var(--ciano);
-}
-
-body.modo-chamativo .negativos {
-  border: 1px solid var(--magenta);
-}
-
-body.modo-chamativo .conclusao {
-  border: 1px solid var(--amarelo);
-}
-
-.positivos h2 { color: var(--ciano); }
-.negativos h2 { color: var(--magenta); }
-.conclusao h2 { color: var(--amarelo); }
-
-ul {
-  padding-left: 20px;
-}
-
-li {
-  margin-bottom: 12px;
-}
-
-li strong {
-  color: var(--amarelo);
-}
-
-/* Tabela */
-.tabela-container {
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-
-th, td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #333;
-}
-
-th {
-  background-color: var(--rosa);
-  color: white;
-}
-
-td strong {
-  color: var(--ciano);
-}
-
-footer {
-  text-align: center;
-  margin-top: 40px;
-  color: var(--amarelo);
-  font-weight: bold;
-}
-
-/* Botão Voltar ao Topo */
-#btn-topo {
-  display: none;
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 99;
-  border: none;
-  outline: none;
-  background-color: var(--ciano);
-  color: #000;
-  cursor: pointer;
-  padding: 12px 18px;
-  border-radius: 30px;
-  font-weight: bold;
-  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4);
-  transition: transform 0.2s;
-}
-
-#btn-topo:hover {
-  transform: scale(1.1);
-  background-color: var(--amarelo);
-}
+  --header-bg: linear-gradient(135deg, var(--laranja), var(--magenta), var(--rosa));
+  --
