@@ -176,3 +176,30 @@
       const p1 = form.elements['p1'].value;
       const p2 = form.elements['p2'].value;
       const p3 = form.elements['p3'].value;
+
+      const resDiv = document.getElementById('quiz-resultado');
+
+      if (!p1 || !p2 || !p3) {
+        resDiv.innerHTML = "<p style='color: var(--magenta);'>Por favor, responda a todas as perguntas para ver seu resultado!</p>";
+        resDiv.style.display = "block";
+        return;
+      }
+
+      const total = parseInt(p1) + parseInt(p2) + parseInt(p3);
+      let mensagem = "";
+
+      if (total <= 4) {
+        mensagem = "🌱 <strong>Consumo Consciente:</strong> Você usa o TikTok de forma moderada e tem total controle sobre seu tempo!";
+      } else if (total <= 7) {
+        mensagem = "⚡ <strong>Usuário Moderado:</strong> A FYP já te pega de surpresa às vezes. Fique atento para não perder muito tempo sem perceber!";
+      } else {
+        mensagem = "🔥 <strong>Totalmente Hipnotizado pela FYP:</strong> O algoritmo te conhece melhor do que você mesmo! Cuidado com o tempo de tela e o brain rot.";
+      }
+
+      resDiv.innerHTML = mensagem;
+      resDiv.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
