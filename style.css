@@ -57,7 +57,7 @@ body {
   color: var(--texto-principal);
   margin: 0;
   padding: 20px;
-  font-size: 1.15rem; /* Fonte base aumentada */
+  font-size: 1.15rem;
   line-height: 1.7;
   transition: all 0.5s ease;
 }
@@ -104,7 +104,7 @@ header {
 
 h1 {
   margin: 0;
-  font-size: 3.2rem; /* Título principal maior */
+  font-size: 3.2rem;
   letter-spacing: 1px;
   animation: pulsoQuente 3s infinite alternate;
 }
@@ -133,7 +133,7 @@ body.modo-frio header h2 {
 }
 
 .container-principal {
-  max-width: 1250px; /* Expandido para acomodar imagens maiores */
+  max-width: 1350px; /* Aumentado para dar espaço extra para as imagens maiores */
   margin: 35px auto;
 }
 
@@ -149,7 +149,7 @@ body.modo-frio header h2 {
 }
 
 .card h2 {
-  font-size: 1.8rem; /* Títulos das seções maiores */
+  font-size: 1.8rem;
 }
 
 .card:hover {
@@ -183,12 +183,12 @@ li { margin-bottom: 14px; font-size: 1.15rem; }
 li strong { color: var(--amarelo); }
 body.modo-frio li strong { color: #00f0ff; }
 
-/* Estilo para Seções com Imagens Externas */
+/* Estilo para Seções com Imagens Externas Enquadradas e Maiores */
 .secao-fora {
   display: flex;
   align-items: center;
-  gap: 30px;
-  margin-bottom: 35px;
+  gap: 35px;
+  margin-bottom: 40px;
 }
 
 .secao-fora.lado-direita {
@@ -205,28 +205,28 @@ body.modo-frio li strong { color: #00f0ff; }
 }
 
 .imagem-externa {
-  flex: 0 0 280px; /* Aumentado para dar espaço a imagens maiores */
+  flex: 0 0 340px; /* Base maior para a foto */
   display: flex;
   justify-content: center;
 }
 
 .img-card {
-  width: 100%;
-  max-width: 280px; /* Imagens maiores (era 200px) */
-  height: auto;
-  border-radius: 14px;
+  width: 340px; /* Largura fixa aumentada */
+  height: 340px; /* Altura fixa para criar um enquadramento perfeito (quadrado/card) */
+  object-fit: cover; /* Faz a imagem preencher todo o espaço sem achatar */
+  border-radius: 16px;
   border: 3px solid var(--borda-card);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .img-card:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 body.modo-frio .img-card {
   border-color: #00f0ff;
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
 }
 
 .tabela-container { overflow-x: auto; }
@@ -385,9 +385,12 @@ body.modo-frio footer {
   .imagem-externa {
     margin-top: 10px;
     flex: 1;
+    width: 100%;
   }
 
   .img-card {
-    max-width: 100%;
+    width: 100%;
+    max-width: 340px;
+    height: 300px;
   }
 }
